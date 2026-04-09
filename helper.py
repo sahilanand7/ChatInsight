@@ -8,7 +8,6 @@ from textblob import TextBlob
 
 
 def fetch_stats(selected_user,df):
-
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -88,7 +87,7 @@ def most_comm_words(selected_user,df):
     return most_comm_df
 
 
-def emoji_helper(selected_user,df):
+def emoji_helper(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -96,8 +95,10 @@ def emoji_helper(selected_user,df):
     for msg in df['message']:
         emojis.extend([c for c in msg if emoji.is_emoji(c)])
 
-    emoji_df = pd.DataFrame(Counter(emojis).most_common(len(Counter(emojis))))
+    if len(emojis) == 0:
+        return pd.DataFrame(columns=['emoji', 'count'])
 
+    emoji_df = pd.DataFrame(Counter(emojis).most_common(), columns=['emoji', 'count'])
     return emoji_df
 
 def monthly_timeline(selected_user,df):
