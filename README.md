@@ -25,3 +25,15 @@ ChatInsight is a web app that analyzes WhatsApp chats and shows useful insights 
 
 ## Live App
 https://chatinsight-app.streamlit.app/
+
+## How to Run
+
+Install dependencies:
+pip install -r requirements.txt
+
+Run the app:
+streamlit run app.py
+
+## Author
+Sahil Anand
+
